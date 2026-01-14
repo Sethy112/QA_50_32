@@ -1,6 +1,7 @@
 package experements;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,6 +15,10 @@ WebDriver driver = new ChromeDriver();
     public void selectorHomePage(){
     driver.get("https://demoqa.com/");
     driver.manage().window().maximize();
+    pausa(3);
+    hideBanner();
+    pausa(3);
+    hideFooter();
     pausa(3);
     driver.navigate().to("https://demoqa.com/elements");
     pausa(3);
@@ -42,9 +47,12 @@ public void selectorsCssTests(){
     pausa(3);
     driver.navigate().back();
     driver.navigate().back();
-//    WebElement divWidgets = driver.findElement(By.cssSelector("div[class='category-cards']" + "[class='card mt-4 top-card']:nth-child(4)"));
+//   WebElement divWidgets = driver.findElement(By.cssSelector("div[class='category-cards']" + "[class='card mt-4 top-card']:nth-child(4)"));
 //   WebElement divWidget = driver.findElement(By.cssSelector("div[class='category-cards' ] [class='card mt-4 top-card']:nth-child(4)"));
 //   divWidget.click();
+    WebElement divWidgets = driver.findElement(By.cssSelector("div[class='category-cards'] " +
+            "[class='card mt-4 top-card']:nth-child(4)"));
+    divWidgets.click();
 
 
 }
@@ -62,6 +70,14 @@ public void pausa(int time){
 
 }
 
+public void hideBanner(){
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("document.querySelector('#fixedban').style.display='none'");
+}
 
 
+public void hideFooter(){
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("document.querySelector('footer').style.display='none'");
+}
 }
