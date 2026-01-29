@@ -8,10 +8,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 public class XpathSelectors {
-    WebDriver driver= new ChromeDriver();
+    WebDriver driver = new ChromeDriver();
 
-@Test
-    public  void selectorsTextBox(){
+    @Test
+    public void selectorsTextBox() {
         driver.get("https://demoqa.com/elements");
         driver.manage().window().maximize();
         pausa(3);
@@ -36,57 +36,32 @@ public class XpathSelectors {
         btnSubmit.click();
         pausa(2);
         WebElement outPut = driver.findElement(By.id("output"));
-    System.out.println(outPut.getText());
-
-
-
-
-
-
-
+        System.out.println(outPut.getText());
 
 
         pausa(3);
-     driver.quit();
+        driver.quit();
 
     }
 
 
-public void scroll(){
-    JavascriptExecutor js=(JavascriptExecutor) driver;
+    public void scroll() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0 ,500);");
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void pausa(int time){
+    public void pausa(int time) {
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
     }
-
-    public void hideBanner(){
+    public void hideBanner() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.querySelector('#fixedban').style.display='none'");
     }
-
-
-    public void hideFooter(){
+    public void hideFooter() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("document.querySelector('footer').style.display='none'");
     }
